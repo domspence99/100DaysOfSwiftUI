@@ -1,0 +1,39 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+
+struct ContentView2: View {
+    
+    var body: some View {
+        //Inside the view body we can create forms
+        //Collections of texts
+        Form {
+            Section { //Creates a divider between rows
+                Text("Apples") //Each row in the form
+                Text("Bananas")
+                Text("Cherries")
+            }
+            Section {
+                Text("Dog")
+                Text("Cat")
+            }
+            Section {
+                Text("Michael Jackson")
+                Text("Taylor Swift")
+                Text("The Beatles")
+            }
+        }
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas

@@ -1,0 +1,39 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+//@State property wrapper lets us modify our View structs properties freely
+//As our program changes, the the view properties & ui changes automatically
+
+//
+struct ContentView: View {
+    
+    //Variable to store the name inputted to text field, defaulted to empty string
+    //@State allows us to change the variable in the View Struct
+    //Private keeps property accessible only in this view
+    
+    @State private var name = ""
+    
+    var body: some View {
+        Form {
+            //Text Field is an input text field
+            //Text Field requires a place to store the text i.e a variable name
+            //$name means that not only does it read from the name variable but it also saves & updates the name string as the user writes
+            //$ creates a 2 way state binding (read the value of the property & write back/update any changes)
+            TextField("Enter your name", text: $name)
+            Text("Your name is: \(name)")
+        }
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas
+//Command+R to run simulator

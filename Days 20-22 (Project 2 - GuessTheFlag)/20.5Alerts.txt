@@ -1,0 +1,47 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Dominic Spence on 08/09/2024.
+//
+
+import SwiftUI
+
+//Remember with swiftUI, views are a function of our programs state
+//Meaning that at any moment in time, swift needs to know the state of our conditions & under what conditions certain views will be shown
+
+struct ContentView: View {
+    @State private var showingAlert = false //Tracks the state of the alert. Showing / not showing
+    //SwiftUI monitors the state variable. As soon as it is true, the alert will be shown
+    
+    @State private var showAlert2 = false
+    
+    var body: some View {
+        //Button that triggers alert 1
+        Button("Show alert") {
+            showingAlert = true //Triggers alert
+        }
+        .buttonStyle(.bordered) //Styling
+        //Alert is double bound to showingAler & presents when true
+        .alert("Alert is showing", isPresented: $showingAlert) {
+            Button("Ok"){ //Alert is triggered & bool is set back to false automatically
+                //What happens after alert is dismissed (nothing)
+            }
+        }
+        
+        //Button to trigger alert 2
+        Button("Show another alert") {
+            showAlert2 = true
+        }
+        .buttonStyle(.borderedProminent)
+        .alert("Alert 2 is showing", isPresented: $showAlert2) {
+            //When asigned destructive role, it is seen in red & a "safer" cancel button is also included to aid the user
+            Button("Delete", role: .destructive) {}
+        } message: { //trailinh closure for alert for text under header
+            Text("Text under heading")
+        }
+    }
+}
+#Preview {
+    ContentView()
+}

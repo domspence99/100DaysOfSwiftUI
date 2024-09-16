@@ -1,0 +1,37 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+//States are a collection of properties & settings that describe how the current situation is
+    
+//In Swift, the UI - the things user can interact with - is dependent on the state of the program.
+//E.g can't press continue without entering name
+
+struct ContentView: View {
+    //ContentView is a struct which means it could be created as a constant (let) i.e the properties inside are immutable
+    //To get around this, we use property wrappers. We can use these before our properties to give them super powers
+    @State private var tapCount = 0
+    
+    //@State allows the property to be stored elsewhere & in turn allows it to be mutabele
+    //@State is designed for simple properties that are stored in 1 view therefore Apple recommend to keep the var private
+    
+    var body: some View {
+    
+        //Buttons are created with text & an action inside the braces of what happens when the button is pressed
+        Button("Current tap count is: \(tapCount)") {
+            tapCount += 1
+        }
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas
+//Command+R to run simulator

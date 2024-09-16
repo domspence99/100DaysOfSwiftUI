@@ -1,0 +1,40 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Dominic Spence on 08/09/2024.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        ZStack(){ //Stacks from back -> front
+            Color.secondary //Black / white depending on light/dark mode
+            Color.primary
+                .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 600)
+            
+            Color(red:1,green:0.8,blue:0) //Custom valuesbetween 0&1
+                .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 400)
+            
+            VStack(spacing:0){
+                Color.indigo //Shows blue color on the back of the stack
+                    .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 100)
+                Color.red
+                    .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 100)
+
+            }
+            Text("My content")
+            //Frosted glass effect ** (VIBRANCY) - USED A LOT BY APPLE
+                .foregroundStyle(.secondary) //text color
+                .padding(30) //spacing around text
+                .background(.ultraThinMaterial) //Frosted glass effect
+            
+        }
+        .ignoresSafeArea() //Allows full stretch of screen (under the safe space)
+    }
+}
+
+#Preview {
+    ContentView()
+}

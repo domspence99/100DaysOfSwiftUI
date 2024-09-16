@@ -1,0 +1,34 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+
+struct ContentView1: View { //ContentView struct that conforms to the View protocol
+//View protocol is conformed by anything that wants to draw to the screen
+//Text, buttons, sliders etc
+    
+    var body: some View { //Computed property called body that contains some View
+//Some view returns something that conforms to the View protocol
+//The view protocol only has this 1 requirement, to return a body with some view
+       
+        VStack { //Inside the body we have a Vstack with an image & text
+            Image(systemName: "wifi")
+                .imageScale(.large) // methods being called on the image (modifiers)
+                .foregroundStyle(.tint)
+            Text("Hello, world!")
+        }
+        .padding()
+    }
+}
+
+//Just for design & testing
+//Previews the contentView to the canvas on the right
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas

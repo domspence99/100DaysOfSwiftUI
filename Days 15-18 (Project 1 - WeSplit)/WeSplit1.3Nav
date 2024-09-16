@@ -1,0 +1,45 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+
+struct ContentView: View {
+    
+    var body: some View {
+        //Navigation stack creates a nav bar & prevents scrolling into header area (clock wifi etc)
+        NavigationStack {
+            Form {
+                Section {
+                    Text("Apples")
+                    Text("Bananas")
+                    Text("Cherries")
+                }
+                Section {
+                    Text("Dog")
+                    Text("Cat")
+                }
+                Section {
+                    Text("Michael Jackson")
+                    Text("Taylor Swift")
+                    Text("The Beatles")
+                }
+            }
+            .navigationTitle("SwiftUI Forms") //adding a modifier to the form to give a title to the nav stack
+            .navigationBarTitleDisplayMode(.inline) //Puts title in middle
+            
+            //If you scroll you can see the nav bar in effect
+        }
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas
+//Command+R to run simulator

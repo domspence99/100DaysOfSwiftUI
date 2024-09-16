@@ -1,0 +1,95 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Dominic Spence on 08/09/2024.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        //Buttons have a text field & execute the action inside the trailing closure when pressed
+        Button("Delete selection") {
+            print("Selection is being deleted")
+        }
+        //Trailing closure can also be replaced by a function
+        Button("Delete selection using function", role: .destructive, action: deleteSelection) //Destructive changes style & voiceover options, tells swift its a dangerous button (i.e things will be deleted)
+        Spacer()
+        
+        //BUTTON STYLES
+        VStack {
+            //Bordered
+            Button("Button 1") {}
+                .buttonStyle(.bordered) //Grey w/blue text - adaptable to light/dark mode
+            //Bordered & destructive
+            Button("Button 2", role: .destructive) {}
+                .buttonStyle(.bordered)
+            //Bordered prominent with tint
+            Button("Button 3") {}
+                .buttonStyle(.borderedProminent)
+                .tint(.indigo)
+            //Bordered prominent & destructive
+            Button("Button 4", role: .destructive) {}
+                .buttonStyle(.borderedProminent)
+            //Custom button
+            Button{
+                print("Custom button was pressed")
+            } label: {
+                Text("Custom button")
+                    .padding()
+                    .foregroundStyle(.white) //text color
+                    .background(.red) //button background color
+            }
+        }
+        Spacer()
+        
+        //ADDING IMAGES TO VIEW
+        VStack(spacing:0){
+            //1. First way to add image is using image
+            Image("aldi") //Shows image saved in assets catalogue
+                .resizable(resizingMode: .stretch) //resizes image
+            
+            //2. Decorative images won't read on voiceover but still show as normal
+            Image(decorative: "aldi")
+                .resizable()
+            
+            //3. Symbols & icons (app called SF Symbols
+            Image(systemName: "pencil.circle")
+                .foregroundStyle(.blue) //controls the color
+                .font(.largeTitle) //controls the size
+            
+            //** Screen reader will read the strings for your image names so be careful with naming
+            //** Otherwise use decorative to make screen reader skip over these
+        }
+        Spacer()
+        
+        //Buttons & images
+        VStack{
+            //1. Add image & title to button initialiser
+            Button("Edit", systemImage: "pencil.circle"){}
+            
+            //2. Use custom button with HStack
+            //Using as a label, you can add custom styling to image
+            Button{}
+        label: {
+            HStack {
+                Image(systemName: "pencil")
+                Text("Edit 2")
+                //or more preffered
+                Label("Edit 3", systemImage: "pencil")
+                    .padding() //custom styling on image & text
+                    .foregroundStyle(.green)
+                
+            }
+        }
+        }
+        
+    }
+    func deleteSelection() {
+        print("Selection is being deleted by function")
+    }
+}
+#Preview {
+    ContentView()
+}

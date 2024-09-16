@@ -1,0 +1,60 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Dominic Spence on 31/08/2024.
+//
+
+import SwiftUI
+
+//Sometimes we want to use loops to create severals View elements in swiftUI
+//i.e if we wanted to loop over an array of menu options & present them in a picker(list)
+
+//ForEach lets us loop over arrays/ranges etc and lets us create views based upon them
+
+struct ContentView: View {
+    
+    let students = ["Harry", "Hermione", "Ron"] //Static array of students
+    @State private var selectedStudent = "Harry" //Value of picker selection, defaulted to Harry but can change (@State)
+    
+    
+    var body: some View {
+        NavigationStack{
+            Form{
+                Section { //Foreach number 1-5, create a text view in the column
+                    ForEach(0..<5) { number in
+                        Text("Row: \(number)")
+                    }
+                }
+                Section { //Shorthand syntax for ForEach
+                    ForEach(0..<3) {
+                        Text("Row2: \($0)")
+                    }
+                }
+                Section { //Section for student picker
+                    //Picker with description & 2-way binding value (read & rewritten) from internal var
+                    Picker("Select your student", selection: $selectedStudent){
+                        //Swift needs to identify every view on the screen uniquely
+                        //For the string array, the string in each element IS the unique identifier
+                        //Therefore we can use the string itself to create an ID for the view
+                        
+                        //*If we had multiple of the same string, this wouldn't work as there would be items with the same id
+                        
+                        ForEach(students, id: \.self) { //Loops through student array and creates a text view with that students name and assigns each view a unique ID from the string itself
+                            Text($0)}
+                    }
+                    
+                }
+            }  .navigationTitle("Pick a student")
+            
+        }
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+//Option+Command+P to refresh canvas
+//Command+R to run simulator
+//Command+A then Control+I for auto format

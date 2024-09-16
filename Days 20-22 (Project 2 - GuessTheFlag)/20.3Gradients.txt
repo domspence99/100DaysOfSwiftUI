@@ -1,0 +1,62 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Dominic Spence on 08/09/2024.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        //Gradients need
+        //1. Tyoe of gradient
+        //2. Array of colors
+        //3. Size & direction information
+        VStack(spacing: 0){
+            //1.Simple linear gradient
+            ZStack{
+                LinearGradient(colors: [.red,.blue], startPoint: .top, endPoint: .bottom)
+                Text("1. Simple Linear Gradient")
+            }
+            
+            //2. Gradient with stops
+            ZStack{
+                LinearGradient(stops: [
+                    //Begins gradient/fade between 45% & 55% of screen
+                    Gradient.Stop(color: .yellow, location: 0.45),
+                    //Can use Gradient.stop or .init
+                    .init(color: .green, location: 0.55)]
+                               , startPoint: .top, endPoint: .bottom)
+            Text("2. Gradient with stops")
+            }
+            
+            //3.Radial gradients
+            ZStack{
+                //Orange circle to radius 50, then gradient to 150, then indigo after
+                RadialGradient(colors: [.orange, .indigo], center: .center, startRadius: 50, endRadius: 150)
+                Text("3. Radial Gradient")
+            }
+            
+            //4. Angular gradients
+            ZStack {
+                //Angles the colours outfrom the center
+                AngularGradient(colors: [.red,.yellow, .green, .blue, .purple, .red], center: .center)
+                Text("4. Angular gradient")
+            }
+            //* Can use all of these with gradient stops also
+            
+            
+            //5. .gradient swiftUI property
+            //Can use .background.color.gradient to create a slight gradient created by swiftUI
+            //** Can only use it as a background/foreground style & not on individual views
+            
+
+            
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
